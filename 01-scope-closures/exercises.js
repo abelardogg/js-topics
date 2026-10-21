@@ -6,14 +6,32 @@
  */
 
 /* ------------------------------------------------------------------ *
- * 1. fixLoop  ·  ENCONTRAR EL BUG
+ * 1a. fixLoop  ·  ENCONTRAR EL BUG
  *
  * Deberia devolver un array de 3 funciones que al llamarlas den 0, 1 y 2.
- * Ahora las tres devuelven 3. Arreglalo.
- *
- * Reto extra: hazlo funcionar de dos formas distintas (una sin cambiar `var`).
+ * Ahora las tres devuelven 3. Arreglalo como quieras.
  * ------------------------------------------------------------------ */
 export function fixLoop() {
+  const fns = [];
+  for (var i = 0; i < 3; i++) {
+    fns.push(function () {
+      return i;
+    });
+  }
+  return fns;
+}
+
+/* ------------------------------------------------------------------ *
+ * 1b. fixLoopB  ·  EL MISMO BUG, OTRA SALIDA
+ *
+ * Mismo objetivo: 0, 1, 2. La restriccion es que el `var i` se queda.
+ * No puedes cambiarlo por `let` ni sacar el contador del loop; el test
+ * revisa que la palabra `var` siga en esta funcion.
+ *
+ * O sea: si la caja `i` es una sola para todo el loop, que mas puedes
+ * cambiar para que cada funcion se lleve su propio numero en la mochila?
+ * ------------------------------------------------------------------ */
+export function fixLoopB() {
   const fns = [];
   for (var i = 0; i < 3; i++) {
     fns.push(function () {

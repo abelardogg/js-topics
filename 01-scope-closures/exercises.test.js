@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   fixLoop,
+  fixLoopB,
   createCounter,
   once,
   memoize,
@@ -39,6 +40,38 @@ test('fixLoop: cada llamada crea funciones nuevas e independientes', () => {
   const b = fixLoop();
   assert.notEqual(a[0], b[0]);
   assert.deepEqual([a[0](), b[0]()], [0, 0]);
+});
+
+/* ----------------------------- 1b. fixLoopB ----------------------------- */
+
+test('fixLoopB: devuelve 3 funciones', () => {
+  const fns = fixLoopB();
+  assert.equal(fns.length, 3);
+  for (const fn of fns) assert.equal(typeof fn, 'function');
+});
+
+test('fixLoopB: cada funcion recuerda su propio indice', () => {
+  const fns = fixLoopB();
+  assert.deepEqual(
+    fns.map((fn) => fn()),
+    [0, 1, 2],
+  );
+});
+
+test('fixLoopB: el orden de llamada no cambia el resultado', () => {
+  const fns = fixLoopB();
+  assert.equal(fns[2](), 2);
+  assert.equal(fns[0](), 0);
+  assert.equal(fns[1](), 1);
+  assert.equal(fns[2](), 2, 'llamar dos veces debe dar lo mismo');
+});
+
+test('fixLoopB: sigue usando var (la restriccion del ejercicio)', () => {
+  assert.match(
+    fixLoopB.toString(),
+    /\bvar\b/,
+    'la variante B tiene que resolverlo sin quitar el var',
+  );
 });
 
 /* --------------------------- 2. createCounter --------------------------- */

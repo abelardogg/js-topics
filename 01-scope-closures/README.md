@@ -96,14 +96,15 @@ npm run test:01
 
 | # | Funcion | Que practica |
 |---|---|---|
-| 1 | `fixLoop` | Encontrar el bug: `var` en loop. Debe devolver `0, 1, 2`. |
+| 1a | `fixLoop` | Encontrar el bug: `var` en loop. Debe devolver `0, 1, 2`. |
+| 1b | `fixLoopB` | El mismo bug, pero el `var` se queda. Otra salida. |
 | 2 | `createCounter` | Estado privado e instancias independientes. |
 | 3 | `once` | Cachear la primera llamada, incluso si devolvio `undefined`. |
 | 4 | `memoize` | Cache de 1 argumento con `Map`; `1` != `"1"`; cachear falsy. |
 | 5 | `getGreeter` | Encontrar el bug: `this` perdido. |
 | 6 | `createIdGenerator` | Mini reto: contador con prefijo + `.reset()`. |
 
-Los ejercicios 1 y 5 ya traen codigo: **esta mal a proposito**, tu lo arreglas.
+Los ejercicios 1a, 1b y 5 ya traen codigo: **esta mal a proposito**, tu lo arreglas.
 Los demas son stubs que lanzan `Error('TODO')`.
 
 ### Trampas que los tests vigilan
