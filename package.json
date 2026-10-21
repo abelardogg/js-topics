@@ -1,0 +1,15 @@
+{
+  "name": "js-topics",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plan de practica: fundamentos de JS, React y TypeScript",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test \"**/*.test.js\"",
+    "test:01": "node --test \"01-scope-closures/*.test.js\"",
+    "test:01:watch": "node --test --watch \"01-scope-closures/*.test.js\""
+  }
+}
