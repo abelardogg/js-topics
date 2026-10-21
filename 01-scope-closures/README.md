@@ -88,11 +88,23 @@ Ese es el bug que buscan los tests de "instancias independientes".
 
 ## Ejercicios
 
-Edita **solo** `exercises.js`. Corre los tests con:
+Edita **solo** `exercises.js`.
 
 ```bash
-npm run test:01
+npm run test:01          # corre los 34 tests una vez
+npm run test:01:watch    # los re-corre en cada guardado
+npm run play:01          # imprime lo que devuelve tu codigo, sin aserciones
 ```
+
+Para correr solo un ejercicio, filtra por nombre (el flag va **antes** del
+archivo; si lo pones al final, node lo ignora):
+
+```bash
+node --test --test-name-pattern "fixLoop" "01-scope-closures/*.test.js"
+```
+
+`playground.js` es tuyo: cambialo, agrega casos, comenta lo que no uses.
+Los tests no lo revisan.
 
 | # | Funcion | Que practica |
 |---|---|---|

@@ -14,9 +14,10 @@
 export function fixLoop() {
   const fns = [];
   for (var i = 0; i < 3; i++) {
-    fns.push(function () {
-      return i;
-    });
+
+    let f = ()=>i;
+
+    fns.push(f);
   }
   return fns;
 }
@@ -34,9 +35,8 @@ export function fixLoop() {
 export function fixLoopB() {
   const fns = [];
   for (var i = 0; i < 3; i++) {
-    fns.push(function () {
-      return i;
-    });
+        fns.push(()=>{i});
+
   }
   return fns;
 }

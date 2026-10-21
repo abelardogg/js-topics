@@ -10,6 +10,7 @@
   "scripts": {
     "test": "node --test \"**/*.test.js\"",
     "test:01": "node --test \"01-scope-closures/*.test.js\"",
-    "test:01:watch": "node --test --watch \"01-scope-closures/*.test.js\""
+    "test:01:watch": "node --test --watch \"01-scope-closures/*.test.js\"",
+    "play:01": "node 01-scope-closures/playground.js"
   }
 }
