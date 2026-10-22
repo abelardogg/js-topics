@@ -4,17 +4,17 @@
  *
  * Este archivo es tuyo: cambialo, comenta lo que no te interese,
  * agrega los casos que quieras probar. No lo revisan los tests.
+ *
+ * Para pass/fail por caso usa los tests: npm run test:01:2 (o :1a, :3, ...).
  */
 
-import {
-  fixLoop,
-  fixLoopB,
-  createCounter,
-  once,
-  memoize,
-  getGreeter,
-  createIdGenerator,
-} from './exercises.js';
+import { fixLoop } from './1a-fix-loop.js';
+import { fixLoopB } from './1b-fix-loop-b.js';
+import { createCounter } from './2-create-counter.js';
+import { once } from './3-once.js';
+import { memoize } from './4-memoize.js';
+import { getGreeter } from './5-get-greeter.js';
+import { createIdGenerator } from './6-create-id-generator.js';
 
 /** Corre algo y, si truena, imprime el error en vez de matar el proceso. */
 function show(label, fn) {

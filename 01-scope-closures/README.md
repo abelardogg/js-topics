@@ -88,41 +88,52 @@ Ese es el bug que buscan los tests de "instancias independientes".
 
 ## Ejercicios
 
-Edita **solo** `exercises.js`.
+Un archivo por ejercicio, con su test al lado. Solo editas el archivo sin
+`.test`. Cada archivo trae arriba un bloque **ESPERADO** con los resultados
+concretos que se buscan.
+
+| # | Archivo | Corre solo este | Tests |
+|---|---|---|---|
+| 1a | [`1a-fix-loop.js`](1a-fix-loop.js) | `npm run test:01:1a` | 7 |
+| 1b | [`1b-fix-loop-b.js`](1b-fix-loop-b.js) | `npm run test:01:1b` | 7 |
+| 2 | [`2-create-counter.js`](2-create-counter.js) | `npm run test:01:2` | 12 |
+| 3 | [`3-once.js`](3-once.js) | `npm run test:01:3` | 9 |
+| 4 | [`4-memoize.js`](4-memoize.js) | `npm run test:01:4` | 15 |
+| 5 | [`5-get-greeter.js`](5-get-greeter.js) | `npm run test:01:5` | 9 |
+| 6 | [`6-create-id-generator.js`](6-create-id-generator.js) | `npm run test:01:6` | 9 |
+
+Los ejercicios 1a, 1b y 5 ya traen codigo: **esta mal a proposito**, tu lo
+arreglas. Los demas lanzan `Error('TODO')` hasta que los escribas.
+
+## Como correr
 
 ```bash
-npm run test:01          # corre los 34 tests una vez
-npm run test:01:watch    # los re-corre en cada guardado
-npm run play:01          # imprime lo que devuelve tu codigo, sin aserciones
+npm run test:01:2            # solo el ejercicio 2
+npm run test:01:2:watch      # el 2, re-corriendo en cada guardado  <- el util
+npm run test:01              # los 67 de la sesion
+npm run play:01              # imprime las salidas, sin aserciones
 ```
 
-Para correr solo un ejercicio, filtra por nombre (el flag va **antes** del
-archivo; si lo pones al final, node lo ignora):
+Cada caso sale como `✔` o `✖` con su nombre. Los que fallan traen al final el
+`actual` vs `expected` y la linea del test:
 
-```bash
-node --test --test-name-pattern "fixLoop" "01-scope-closures/*.test.js"
+```
+✖ 2 · dos increments seguidos avanzan: 6 y luego 7
+  AssertionError: el contador tiene que recordar, no recalcular desde start
+    actual: 6,
+    expected: 7,
 ```
 
 `playground.js` es tuyo: cambialo, agrega casos, comenta lo que no uses.
-Los tests no lo revisan.
 
-| # | Funcion | Que practica |
-|---|---|---|
-| 1a | `fixLoop` | Encontrar el bug: `var` en loop. Debe devolver `0, 1, 2`. |
-| 1b | `fixLoopB` | El mismo bug, pero el `var` se queda. Otra salida. |
-| 2 | `createCounter` | Estado privado e instancias independientes. |
-| 3 | `once` | Cachear la primera llamada, incluso si devolvio `undefined`. |
-| 4 | `memoize` | Cache de 1 argumento con `Map`; `1` != `"1"`; cachear falsy. |
-| 5 | `getGreeter` | Encontrar el bug: `this` perdido. |
-| 6 | `createIdGenerator` | Mini reto: contador con prefijo + `.reset()`. |
+## Trampas que los tests vigilan
 
-Los ejercicios 1a, 1b y 5 ya traen codigo: **esta mal a proposito**, tu lo arreglas.
-Los demas son stubs que lanzan `Error('TODO')`.
-
-### Trampas que los tests vigilan
-
+- Ej. 2: dos `increment()` seguidos tienen que avanzar (6, luego 7), no
+  recalcular desde `start`.
 - Ej. 3: `once(fn)` donde `fn` devuelve `undefined` -> no debe volver a llamarla.
-- Ej. 4: `memoize` con resultado `0`, `null` o `undefined` -> debe cachearse.
+- Ej. 4: resultados `0`, `null`, `undefined`, `false`, `''` y `NaN` se cachean;
+  `1` y `"1"` son claves distintas.
+- Ej. 5: arreglarlo sin tocar el objeto `user`.
 - Ej. 2 y 6: dos instancias no comparten contador.
 - Ej. 6: `.reset()` vuelve a empezar en 1.
 

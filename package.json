@@ -8,9 +8,23 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test \"**/*.test.js\"",
-    "test:01": "node --test \"01-scope-closures/*.test.js\"",
-    "test:01:watch": "node --test --watch \"01-scope-closures/*.test.js\"",
+    "test": "node --test --test-reporter=spec \"**/*.test.js\"",
+    "test:01": "node --test --test-reporter=spec \"01-scope-closures/*.test.js\"",
+    "test:01:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/*.test.js\"",
+    "test:01:1a": "node --test --test-reporter=spec \"01-scope-closures/1a-*.test.js\"",
+    "test:01:1a:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/1a-*.test.js\"",
+    "test:01:1b": "node --test --test-reporter=spec \"01-scope-closures/1b-*.test.js\"",
+    "test:01:1b:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/1b-*.test.js\"",
+    "test:01:2": "node --test --test-reporter=spec \"01-scope-closures/2-*.test.js\"",
+    "test:01:2:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/2-*.test.js\"",
+    "test:01:3": "node --test --test-reporter=spec \"01-scope-closures/3-*.test.js\"",
+    "test:01:3:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/3-*.test.js\"",
+    "test:01:4": "node --test --test-reporter=spec \"01-scope-closures/4-*.test.js\"",
+    "test:01:4:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/4-*.test.js\"",
+    "test:01:5": "node --test --test-reporter=spec \"01-scope-closures/5-*.test.js\"",
+    "test:01:5:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/5-*.test.js\"",
+    "test:01:6": "node --test --test-reporter=spec \"01-scope-closures/6-*.test.js\"",
+    "test:01:6:watch": "node --test --watch --test-reporter=spec \"01-scope-closures/6-*.test.js\"",
     "play:01": "node 01-scope-closures/playground.js"
   }
 }
